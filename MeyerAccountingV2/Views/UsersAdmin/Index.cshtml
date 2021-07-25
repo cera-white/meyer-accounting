@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IdentitySample.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Manage Users";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

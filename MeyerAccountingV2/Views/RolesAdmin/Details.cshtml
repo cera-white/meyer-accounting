@@ -1,0 +1,54 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "View Role";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div>
+                <h4>Role Details</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                </dl>
+            </div>
+            <h4>List of users in this role</h4>
+            @if (ViewBag.UserCount == 0)
+            {
+                <hr />
+                <p>No users found in this role.</p>
+            }
+
+            <table class="table">
+
+                @foreach (var item in ViewBag.Users)
+                {
+                    <tr>
+                        <td>
+                            @item.UserName
+                        </td>
+                    </tr>
+                }
+            </table>
+            <p>
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>
+
+
+

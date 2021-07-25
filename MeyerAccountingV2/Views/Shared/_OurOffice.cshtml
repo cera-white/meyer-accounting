@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MeyerAccountingV2.EF.Section>
+
+<div class="col-md-4 col-md-offset-1">
+
+    <h4 class="mt-xl mb-none">Our Office</h4>
+    <div class="divider divider-primary divider-small mb-xl">
+        <hr>
+    </div>
+
+    <div class="mb-xl">
+        <img class="img-responsive" alt="@Model.FirstOrDefault(x => x.SectionId == 7).StockImage.Description" src="~/Content/Image/stock/@Model.FirstOrDefault(x => x.SectionId == 7).StockImage.Filename" />
+    </div>
+
+    <ul class="list list-icons list-icons-style-3 mt-xlg mb-xlg">
+        <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> @ViewBag.AddressOneLine</li>
+        <li><i class="fa fa-phone"></i> <strong>Phone:</strong> @ViewBag.Phone</li>
+        <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:@ViewBag.Email">@ViewBag.Email</a></li>
+    </ul>
+
+    <h4 class="pt-xl mb-none">Business Hours</h4>
+    <div class="divider divider-primary divider-small mb-xl">
+        <hr>
+    </div>
+
+    <ul class="list list-icons list-dark mt-xlg">
+        @foreach (var item in ViewBag.BusinessHours)
+        {
+            <li><i class="fa fa-clock-o"></i> <strong>@item.Day:</strong> @item.Hours</li>
+        }
+    </ul>
+
+</div>
+

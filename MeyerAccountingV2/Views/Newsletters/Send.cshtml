@@ -1,0 +1,118 @@
+﻿@model MeyerAccountingV2.EF.Newsletter
+
+@{
+    ViewBag.Title = "Mail Newsletter";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div>
+                <h4>Are you sure you want to send this Newsletter to all subscribers?</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        User Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Staff.FullName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateSubmitted)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DateSubmitted)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Tags)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Tags)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </dt>
+
+                    @if (Model.Image != null)
+                    {
+                        <dd>
+                            <div>@Html.DisplayFor(model => model.Image)</div>
+                            <div><img src="~/Content/Image/blog/@Model.Image" alt="@Model.Title" style="max-width:300px" /></div>
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd>@Html.DisplayFor(model => model.Image)</dd>
+                    }
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DownloadLink)
+                    </dt>
+
+                    <dd>
+                        @if (Model.DownloadLink != null)
+                        {
+                            <a href="/Content/Download/@Model.DownloadLink" target="_blank">/Content/Download/@Model.DownloadLink</a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => model.DownloadLink)
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                    <dt>
+                        Actions
+                    </dt>
+
+                    <dd>
+                        <a href="@Url.Action("Details", "Newsletters", new { id = Model.NewsletterId })" target="_blank">See Full Article</a> |
+                        <a href="@Url.Action("Manage", "Subscribers")" target="_blank">Manage Subscribers</a>
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Send Mail" class="btn btn-default" /> |
+                        @Html.ActionLink("Back to List", "Manage")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

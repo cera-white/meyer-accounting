@@ -1,0 +1,149 @@
+﻿@model MeyerAccountingV2.EF.Newsletter
+
+@{
+    ViewBag.Title = "Edit Newsletter";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            @using (Html.BeginForm("Edit", "Newsletters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Update an existing Newsletter</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.NewsletterId)
+                    @Html.HiddenFor(model => model.StaffId)
+                    @Html.HiddenFor(model => model.DateSubmitted)
+                    @Html.HiddenFor(model => model.Image)
+                    @Html.HiddenFor(model => model.DownloadLink)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.StaffId, "StaffId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("StaffId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.StaffId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateSubmitted, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateSubmitted, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DateSubmitted, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = "10", @placeholder = "Loading text editor..." })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <span class="control-label col-md-12 text-left">@Model.Image</span>
+                            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">New Image (optional)</label>
+                        <div class="col-md-10">
+                            <input type="file" class="control-label col-md-12 text-left" name="image2" accept=".jpg,.jpeg,.png"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DownloadLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <span class="control-label col-md-12 text-left"><a href="~/Content/Download/@Model.DownloadLink" target="_blank">@Model.DownloadLink</a></span>
+                            @Html.ValidationMessageFor(model => model.DownloadLink, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">New File (optional)</label>
+                        <div class="col-md-10">
+                            <input type="file" class="control-label col-md-12 text-left" name="downloadLink2" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsActive)
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                <span class="control-label text-left">Uncheck this box to HIDE the newsletter from showing up</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Manage")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+              'advlist autolink lists link image charmap print preview anchor textcolor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table contextmenu paste code help wordcount'
+            ],
+            toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            content_css: [
+              '//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light',
+              '/css/vendor',
+              '/css/theme',
+              '/css/skin',
+              '/Content/tinymce.css'
+            ]
+        });
+    </script>
+}

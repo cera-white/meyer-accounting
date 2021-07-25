@@ -1,0 +1,277 @@
+﻿@model IEnumerable<MeyerAccountingV2.EF.Section>
+
+@{
+    ViewBag.Title = "Home";
+    ViewBag.FooterInfo = "Icons by <a target='_blank' href='https://www.vecteezy.com'>Vecteezy</a>";
+}
+
+<div class="collapse-control visible-xs">
+    <button class="btn btn-default full-width collapsed" type="button" data-toggle="collapse" data-target="#home" aria-expanded="false" aria-controls="home">
+        View More <i class="fa fa-angle-down"></i>
+    </button>
+</div>
+<div id="home">
+    <div class="slider-container rev_slider_wrapper hidden-xs" style="height: 650px;">
+        <div id="revolutionSlider" class="slider rev_slider manual">
+            <ul>
+                @foreach (var item in ViewBag.Slides)
+            {
+                    <li data-transition="fade" data-title="@item.Title">
+
+                        <img src="~/Content/Image/stock/@item.StockImage.Filename"
+                             alt="@item.Title"
+                             data-bgposition="center center"
+                             data-bgfit="cover"
+                             data-bgrepeat="no-repeat"
+                             class="rev-slidebg">
+
+                        <div class="tp-caption main-label text-uppercase"
+                             data-x="@(item.IsRightAligned ? "right": "left")" data-hoffset="100"
+                             data-y="center" data-voffset="-45"
+                             data-start="1500"
+                             data-whitespace="nowrap"
+                             data-transform_in="y:[100%];s:500;"
+                             data-transform_out="opacity:0;s:500;"
+                             style="z-index: 5"
+                             data-mask_in="x:0px;y:0px;">@item.Title</div>
+
+                            <div class="tp-caption top-label"
+                                 data-x="@(item.IsRightAligned ? "right": "left")" data-hoffset="100"
+                                 data-y="center" data-voffset="5"
+                                 data-start="2000"
+                                 style="z-index: 5"
+                                 data-transform_in="y:[100%];opacity:0;s:500;">@item.Description</div>
+
+                                @if (item.LinkId != null)
+                                {
+                                    <a class="tp-caption btn btn-primary btn-lg"
+                                       data-hash
+                                       data-hash-offset="85"
+                                       href="@item.Link.Url"
+                                       data-x="@(item.IsRightAligned ? "right": "left")" data-hoffset="100"
+                                       data-y="center" data-voffset="80"
+                                       data-start="2500"
+                                       data-whitespace="nowrap"
+                                       data-transform_in="y:[100%];s:500;"
+                                       data-transform_out="opacity:0;s:500;"
+                                       style="z-index: 5"
+                                       data-mask_in="x:0px;y:0px;">@item.Link.Name</a>
+                                }
+
+                            </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <section class="section section-default section-no-border mt-none mb-none">
+        <div class="container">
+            <div class="row mb-xl">
+                <div class="col-md-7">
+                    <h2 class="mt-xl mb-none">@Model.FirstOrDefault(x => x.SectionId == 2).Name</h2>
+                    <div class="divider divider-primary divider-small mb-xl">
+                        <hr>
+                    </div>
+
+                    @Html.Raw(Model.FirstOrDefault(x => x.SectionId == 2).Content)
+
+                    <a class="mt-md" href="@Url.Action("About", "Home")">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                </div>
+                <div class="col-md-4 col-md-offset-1">
+                    <h4 class="mt-xl mb-none">@Model.FirstOrDefault(x => x.SectionId == 3).Name</h4>
+                    <div class="divider divider-primary divider-small mb-xl">
+                        <hr>
+                    </div>
+
+                    @Html.Raw(Model.FirstOrDefault(x => x.SectionId == 3).Content)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quicklinks" class="section section-center section-no-border mt-none">
+        <div class="container">
+            <div class="row row-eq-height">
+                <div class="col-xs-12 col-md-4">
+                    <div class="quicklinks-col">
+                        <h2 class="mb-none"><i class="fa fa-link"></i></h2>
+                        <h4 class="text-uppercase">Quick Links</h4>
+                        <ul class="quicklinks-list mt-lg">
+                            @foreach (var item in ViewBag.QuickLinks)
+                            {
+                                <li><a href="@item.Url" target="_blank">@item.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="quicklinks-col">
+                        <h2 class="mb-none"><i class="fa fa-map-marker"></i></h2>
+                        <h4 class="text-uppercase">Find My Refund</h4>
+                        <ul class="quicklinks-list mt-lg">
+                            @foreach (var item in ViewBag.RefundLinks)
+                            {
+                                <li><a href="@item.Url" target="_blank">@item.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="quicklinks-col">
+                        <h2 class="mb-none"><i class="fa fa-check-square-o"></i></h2>
+                        <h4 class="text-uppercase">What to Bring</h4>
+                        <ul class="quicklinks-list mt-lg">
+                            @foreach (var item in ViewBag.ChecklistLinks)
+                            {
+                                <li><a href="@item.Url" target="_blank">@item.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="services">
+        <div class="row">
+            <div class="col-md-12 center">
+                <h2 class="mt-xl mb-none">Individual Services</h2>
+                <div class="divider divider-primary divider-small divider-small-center mb-xl">
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-lg">
+            <div class="owl-carousel owl-theme owl-team-custom show-nav-title" id="individual-services" data-plugin-options="{'items': 3, 'margin': 10, 'loop': false, 'nav': true, 'dots': false}">
+                @foreach (var item in ViewBag.IndividualServices)
+            {
+                    <div class="mb-lg">
+                        <div class="feature-box feature-box-style-2 mb-xl appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0">
+                            <div class="feature-box-icon">
+                                <img src="~/Content/Image/icons/@item.Icon" alt="@item.Name" />
+                            </div>
+                            <div class="feature-box-info ml-md">
+                                <h4 class="mb-sm">@item.Name</h4>
+                                <p>@item.Summary</p>
+                                <a class="mt-md" href="@Url.Action("Index", "Services")">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 center">
+                <h2 class="mt-xl mb-none">Business Services</h2>
+                <div class="divider divider-primary divider-small divider-small-center mb-xl">
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-lg">
+            <div class="owl-carousel owl-theme owl-team-custom show-nav-title" id="business-services" data-plugin-options="{'items': 3, 'margin': 10, 'loop': false, 'nav': true, 'dots': false}">
+                @foreach (var item in ViewBag.BusinessServices)
+            {
+                    <div class="mb-lg">
+                        <div class="feature-box feature-box-style-2 mb-xl appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0">
+                            <div class="feature-box-icon">
+                                <img src="~/Content/Image/icons/@item.Icon" alt="@item.Name" />
+                            </div>
+                            <div class="feature-box-info ml-md">
+                                <h4 class="mb-sm">@item.Name</h4>
+                                <p>@item.Summary</p>
+                                <a class="mt-md" href="@Url.Action("Index", "Services")#BusinessServices">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="testimonials">
+        <div class="row hidden-xs">
+            <div class="col-md-6 p-none">
+                <section class="section section-primary match-height mt-xl" style="background-image: url(@Url.Content("~/Content/Image/patterns/blue-pattern.png"));">
+                    <div class="row">
+                        <div class="col-half-section col-half-section-right">
+                            <h2 class="mb-none">Testimonials</h2>
+                            <div class="divider divider-light divider-small mb-xl">
+                                <hr>
+                            </div>
+
+                            <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': false, 'dots': true}">
+                                @foreach (var item in ViewBag.Testimonials)
+                                {
+                                    <div>
+                                        <div class="testimonial testimonial-style-3 testimonial-trasnparent-background testimonial-alternarive-font">
+                                            <blockquote>
+                                                <p class="text-light">@item.Comment</p>
+                                            </blockquote>
+                                            <div class="testimonial-author">
+                                                <p><strong>@item.Author</strong><span class="text-light">@item.AuthorTitle</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div id="testimonial-buttons">
+                                @*<a href="@Url.Action("Create", "Testimonials")">Write your own Testimonial</a> |*@ <a href="http://www.angieslist.com/AngiesList/Review/3698290" target="_blank">Review us on Angie's List</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6 p-none visible-md visible-lg">
+                <section class="parallax section section-parallax match-height mt-xl" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'horizontalPosition': '100%'}" data-image-src="@Url.Content(string.Format("~/Content/Image/stock/{0}", Model.FirstOrDefault(x => x.SectionId == 4).StockImage.Filename))" style="min-height: 450px;"></section>
+            </div>
+        </div>
+
+        <div class="container" id="staff">
+            <div class="row">
+                <div class="col-md-12 center">
+                    <h2 class="mt-xl mb-none">Staff Members</h2>
+                    <div class="divider divider-primary divider-small divider-small-center mb-xl">
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-lg">
+                <div class="owl-carousel owl-theme owl-team-custom show-nav-title" data-plugin-options="{'items': 4, 'margin': 10, 'loop': false, 'nav': true, 'dots': false}">
+                    @foreach (var item in ViewBag.Staff)
+                    {
+                        <div class="center mb-lg">
+                            <a href="@Url.Action("Index", "Staff")">
+                                <div class="thumb-info thumb-info-centered-info thumb-info-no-borders square">
+                                    <img src="~/Content/Image/team/@item.Image" class="img-responsive" alt="@(string.Format("{0} {1}", item.FirstName, item.LastName))">
+                                </div>
+                            </a>
+                            <h4 class="mt-md mb-none">@(item.MiddleName != null ? string.Format("{0} {1} {2}", item.FirstName, item.MiddleName, item.LastName) : string.Format("{0} {1}", item.FirstName, item.LastName))</h4>
+                            <p class="mb-none">@item.Title</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <section id="contact" class="parallax section section-text-light section-background section-footer section-parallax"
+             data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="@Url.Content(string.Format("~/Content/Image/stock/{0}", Model.FirstOrDefault(x => x.SectionId == 5).StockImage.Filename))">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-6">
+                    <h2 class="mt-xl mb-none">Request a Free Consultation</h2>
+                    <p>We'll work with you to determine how we can help you reach your financial goals.</p>
+                    <div class="divider divider-light divider-small mb-xl">
+                        <hr>
+                    </div>
+                    @{Html.RenderPartial("_ContactForm", new MeyerAccountingV2.Models.ContactViewModel());}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

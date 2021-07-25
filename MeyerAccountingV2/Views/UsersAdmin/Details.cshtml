@@ -1,0 +1,59 @@
+﻿@model IdentitySample.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "View User";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div>
+                <h4>User Details</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+                </dl>
+            </div>
+            <h4>List of roles for this user</h4>
+            @if (ViewBag.RoleNames.Count == 0)
+            {
+                <hr />
+                <p>No roles found for this user.</p>
+            }
+
+            <table class="table">
+
+                @foreach (var item in ViewBag.RoleNames)
+                {
+                    <tr>
+                        <td>
+                            @item
+                        </td>
+                    </tr>
+                }
+            </table>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

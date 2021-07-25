@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MeyerAccountingV2.EF.Service>
+
+@{
+    ViewBag.Title = "Servies";
+    ViewBag.FooterInfo = "Icons by <a target='_blank' href='https://www.vecteezy.com'>Vecteezy</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl">
+
+        <div class="col-md-9">
+
+            <h1 class="mt-xl mb-none" id="IndividualServices">Individual Services</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            @foreach (var item in ViewBag.IndividualServices)
+            {
+                <div class="feature-box feature-box-style-2 mb-xl pt-xl">
+                    <div class="feature-box-icon">
+                        <img src="~/Content/Image/icons/@item.Icon" alt="@item.Name" />
+                    </div>
+                    <div class="feature-box-info ml-md">
+                        <h4 class="mb-sm">@item.Name</h4>
+                        <p>@item.Description</p>
+                        @*<a class="mt-md" href="demo-law-firm-practice-areas-detail.html">Learn More <i class="fa fa-long-arrow-right"></i></a>*@
+                    </div>
+                </div>
+            }
+
+            <div class="divider divider-primary mb-xl"><hr /></div>
+
+            <h1 class="mt-xl mb-none" id="BusinessServices">Business Services</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            @foreach (var item in ViewBag.BusinessServices)
+            {
+                <div class="feature-box feature-box-style-2 mb-xl pt-xl">
+                    <div class="feature-box-icon">
+                        <img src="~/Content/Image/icons/@item.Icon" alt="@item.Name" />
+                    </div>
+                    <div class="feature-box-info ml-md">
+                        <h4 class="mb-sm">@item.Name</h4>
+                        <p>@item.Description</p>
+                        @*<a class="mt-md" href="demo-law-firm-practice-areas-detail.html">Learn More <i class="fa fa-long-arrow-right"></i></a>*@
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-3">
+            <aside class="sidebar">
+
+                <h4 class="mt-xl mb-md">Contact Us</h4>
+                <p>Contact us or give us a call to discover how we can help.</p>
+
+                <div class="divider divider-primary divider-small mb-xl">
+                    <hr>
+                </div>
+
+                @{Html.RenderPartial("_ContactForm", new MeyerAccountingV2.Models.ContactViewModel());}
+            </aside>
+        </div>
+    </div>
+
+</div>

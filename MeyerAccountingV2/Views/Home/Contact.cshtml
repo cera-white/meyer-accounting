@@ -1,0 +1,113 @@
+﻿@model IEnumerable<MeyerAccountingV2.EF.Section>
+
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl">
+        <div class="col-md-7">
+            <h1 class="mt-xl mb-none">Contact Us</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+            <p class="lead mb-xl mt-lg">Call us anytime to ask questions or to schedule an appointment!</p>
+
+            @{Html.RenderPartial("_ContactForm", new MeyerAccountingV2.Models.ContactViewModel());}
+
+        </div>
+        @{Html.RenderPartial("_OurOffice", Model);}
+    </div>
+</div>
+
+<!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
+<div id="googlemaps" class="google-map google-map-footer"></div>
+
+@section scripts
+{
+    <script src="https://maps.googleapis.com/maps/api/js?key=mykey"></script>
+
+    <script>
+        /* Map Settings
+
+            Find the Latitude and Longitude of your address:
+                - http://universimmedia.pagesperso-orange.fr/geo/loc.htm
+                - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+        */
+
+        // Map Markers
+        var mapMarkers = [{
+            address: "@ViewBag.AddressOneLine",
+            html: "<strong>@ViewBag.Company</strong><p>@ViewBag.AddressOneLine</p><a href='@ViewBag.GoogleMaps' target='_blank'>View larger map</a>",
+            icon: {
+                image: "@Url.Content("~/Content/Image/pin.png")",
+                iconsize: [26, 46],
+                iconanchor: [12, 46]
+            },
+            popup: true
+        }];
+
+        // Map Initial Location
+        var initLatitude = @ViewBag.MapLatitude;
+        var initLongitude = @ViewBag.MapLongitude;
+
+        // Map Extended Settings
+        var mapSettings = {
+            controls: {
+                draggable: (($.browser.mobile) ? false : true),
+                panControl: true,
+                zoomControl: true,
+                mapTypeControl: true,
+                scaleControl: true,
+                streetViewControl: true,
+                overviewMapControl: true
+            },
+            scrollwheel: false,
+            markers: mapMarkers,
+            latitude: initLatitude,
+            longitude: initLongitude,
+            zoom: 16
+        };
+
+        var map = $('#googlemaps').gMap(mapSettings),
+            mapRef = $('#googlemaps').data('gMap.reference');
+
+        // Map Center At
+        var mapCenterAt = function (options, e) {
+            e.preventDefault();
+            $('#googlemaps').gMap("centerAt", options);
+        }
+
+        // Create an array of styles.
+        var mapColor = "#ddd";
+
+        var styles = [{
+            stylers: [{
+                // hue: mapColor
+            }]
+        }, {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [{
+                lightness: 0
+            }, {
+                visibility: "simplified"
+            }]
+        }, {
+            featureType: "road",
+            elementType: "labels",
+            stylers: [{
+                visibility: "simplified"
+            }]
+        }];
+
+        var styledMap = new google.maps.StyledMapType(styles, {
+            name: 'Styled Map'
+        });
+
+        mapRef.mapTypes.set('map_style', styledMap);
+        mapRef.setMapTypeId('map_style');
+
+    </script>
+}

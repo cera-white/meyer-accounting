@@ -1,0 +1,88 @@
+﻿@model MeyerAccountingV2.EF.Section
+
+@{
+    ViewBag.Title = "View Section";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div>
+                <h4>Section Details</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        Page
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Page.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Content)
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(Model.Content)
+                    </dd>
+
+                    <dt>
+                        Background Image
+                    </dt>
+
+                    @if (Model.ImageId != null)
+                    {
+                        <dd>
+                            <div>@Html.DisplayFor(model => model.StockImage.Name)</div>
+                            <div><img src="~/Content/Image/stock/@Model.StockImage.Filename" alt="@Model.StockImage.Description" style="max-width:300px" /></div>
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd>@Html.DisplayFor(model => model.StockImage.Name)</dd>
+                    }
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.SectionId }) |
+                @Html.ActionLink("Back to List", "Manage", new { id = Model.PageId })
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+

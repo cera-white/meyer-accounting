@@ -1,0 +1,176 @@
+﻿@using MeyerAccountingV2.EF
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewBag.Title | @ViewBag.Company</title>
+
+    <meta name="keywords" content="@ViewBag.SiteKeywords" />
+    <meta name="description" content="@ViewBag.SiteDescription">
+    <meta name="author" content="Cera White">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    @*<link rel="apple-touch-icon" href="img/apple-touch-icon.png">*@
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    @Styles.Render("~/css/vendor")
+
+    <!-- Theme CSS -->
+    @Styles.Render("~/css/theme")
+
+    <!-- Skin CSS -->
+    @Styles.Render("~/css/skin")
+
+    <!-- Head Libs -->
+    @Scripts.Render("~/bundles/modernizer")
+
+</head>
+<body>
+    <div class="body">
+        <header id="header" class="header-no-border-bottom" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 115, 'stickySetTop': '-115px', 'stickyChangeLogo': false}">
+            <div class="header-body">
+                <div class="header-container container">
+                    <div class="header-row">
+                        <div class="header-column">
+                            <div class="header-logo">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <img alt="@ViewBag.Company" data-sticky-width="82" data-sticky-height="40" data-sticky-top="33" src="~/Content/Download/@ViewBag.Logo">
+                                </a>
+                            </div>
+                        </div>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+                <div class="header-container header-nav header-nav-bar header-nav-bar-primary">
+                    <div class="container">
+                        <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
+                            Menu <i class="fa fa-bars"></i>
+                        </button>
+                        @*<div class="header-search visible-lg">
+                            <form id="searchForm" action="#" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="q" id="q" placeholder="Search..." required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="icon-magnifier icons"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>*@
+                        <div class="header-nav-main header-nav-main-light header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
+                            <nav>
+                                <ul class="nav nav-pills" id="mainNav">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About", "Home")">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Staff")">Staff</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Services")">Services</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Newsletters")">Newsletters</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact", "Home")">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div role="main" class="main">
+            @RenderBody()
+        </div>
+
+        <footer id="footer" class="short">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <h4 class="text-uppercase">Information</h4>
+                        <ul class="list list-icons mt-xl">
+                            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> @Html.Raw(ViewBag.Address)</li>
+                            <li><i class="fa fa-phone"></i> <strong>Phone:</strong> @ViewBag.Phone</li>
+                            <li><i class="fa fa-mobile"></i> <strong>Mobile:</strong> @ViewBag.Mobile</li>
+                            <li><i class="fa fa-fax"></i> <strong>Fax:</strong> @ViewBag.Fax</li>
+                            <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:@ViewBag.Email">@ViewBag.Email</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <h4 class="text-uppercase">Business Hours</h4>
+                        <ul class="list list-icons mt-xl">
+                            @foreach (var item in ViewBag.BusinessHours)
+                            {
+                                <li><i class="fa fa-clock-o"></i> <strong>@item.Day:</strong> @item.Hours</li>
+                            }
+                        </ul>
+                        * Other times by appointment
+                    </div>
+                    <div class="col-md-4 hidden-xs hidden-sm">
+                        <h4 class="text-uppercase">Stay Updated</h4>
+                        <p class="newsletter-info">Get all the latest updates from @ViewBag.Company, delivered straight to your inbox. Sign up for our newsletter today!</p>
+
+                        @{Html.RenderPartial("_CreateSubscriber", new Subscriber());}
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p>Copyright &copy; @DateTime.Now.Year @ViewBag.Company. All Rights Reserved. | <a href="@ViewBag.Facebook" target="_blank">Follow us on Facebook</a> | @Html.Raw(ViewBag.FooterInfo)</p>
+                        </div>
+                        <div class="col-md-2 text-right hidden-xs hidden-sm">
+                            <ul class="social-icons">
+                                <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                @*<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Vendor -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/vendor")
+
+    <!-- Theme Base, Components and Settings -->
+    @Scripts.Render("~/bundles/theme")
+
+    @*<script src="~/Scripts/custom.js"></script>*@
+
+    @*Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-12345678-1', 'auto');
+        ga('send', 'pageview');
+    </script>*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

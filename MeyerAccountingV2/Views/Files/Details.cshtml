@@ -1,0 +1,64 @@
+﻿@model MeyerAccountingV2.EF.File
+
+@{
+    ViewBag.Title = "View File";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div>
+                <h4>File Details</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Filename)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Filename)
+                    </dd>
+
+                    <dt>
+                        URL
+                    </dt>
+
+                    <dd>
+                        <a href="/Content/Download/@Html.DisplayFor(model => model.Filename)" target="_blank">/Content/Download/@Html.DisplayFor(model => model.Filename)</a>
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.FileId }) |
+                @Html.ActionLink("Back to List", "Manage")
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,110 @@
+﻿@model MeyerAccountingV2.EF.Staff
+
+@{
+    ViewBag.Title = "Delete Staff Member";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div>
+                <h4>Are you sure you want to delete this Staff Member?</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MiddleName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.MiddleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        Username
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Rank) (Order)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Rank)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </dt>
+
+                    <dd>
+                        <div>@Html.DisplayFor(model => model.Image)</div>
+                        <div><img src="~/Content/Image/team/@Model.Image" alt="@Model.FirstName @Model.LastName" style="max-width:300px" /></div>
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                    <dt>
+                        Qualifications
+                    </dt>
+
+                    <dd>
+                        <a href="@Url.Action("Manage", "StaffQualifications", new { id = Model.StaffId })" target="_blank">Manage qualifications</a>
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @Html.ActionLink("Back to List", "Manage")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

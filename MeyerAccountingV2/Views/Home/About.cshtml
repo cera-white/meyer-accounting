@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MeyerAccountingV2.EF.Section>
+
+@{
+    ViewBag.Title = "About";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl">
+        <div class="col-md-7">
+            <h1 class="mt-xl mb-none">@Model.FirstOrDefault(x => x.SectionId == 6).Name</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <div class="about-content">
+                @Html.Raw(Model.FirstOrDefault(x => x.SectionId == 6).Content)
+            </div>
+
+        </div>
+        @{Html.RenderPartial("_OurOffice", Model);}
+    </div>
+</div>

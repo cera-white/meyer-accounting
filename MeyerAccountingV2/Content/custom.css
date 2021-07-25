@@ -1,0 +1,209 @@
+/* Add here all your CSS customizations */
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    background: #c99e55 !important;
+}
+
+.owl-theme .owl-nav.disabled + .owl-dots {
+    margin-top: 0px;
+}
+
+.owl-carousel {
+    margin-bottom: 5px;
+}
+
+#business-services.owl-team-custom.owl-carousel.show-nav-title .owl-nav {
+    margin-top: 50px;
+}
+
+#testimonial-buttons {
+    color: #cfa968;
+    text-align: center;
+}
+
+    #testimonial-buttons a {
+        color: #fff;
+    }
+
+#testimonials section {
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+.link-section {
+    margin-left: 20px;
+}
+
+#quicklinks h4 {
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+#quicklinks h2 {
+    color: #cfa968;
+}
+
+.quicklinks-col {
+    border: 3px solid #cfa968;
+    padding: 15px 0;
+    height: 100%;
+    background: #fff;
+}
+
+@media (max-width: 768px) {
+    .quicklinks-col {
+        border-width: 2px;
+    }
+}
+
+.quicklinks-list {
+    color: #fff;
+    list-style: none;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 1.2em;
+    line-height: 22px;
+}
+
+/*.quicklinks-list a, 
+.quicklinks-list a:hover {
+    color: #fff;
+}*/
+
+.rev_slider .slotholder:after, .rev_slider .slotholder .kenburnimg img:after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 99;
+    background: rgba(0,0,0,.5);
+}
+
+/*#quicklinks::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    background: rgba(0,0,0,.8);
+}*/
+
+section#contact::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    background: rgba(0,0,0,.5);
+}
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .row-eq-height {
+        display: block;
+    }
+}
+
+.form-group.confirm {
+    display: none;
+}
+
+.has-success .form-control {
+    border-color: #ccc;
+}
+
+form.newsletterForm .input-group-btn {
+    vertical-align: top;
+}
+
+.newsletterSuccess,
+.newsletterError {
+    margin-top: 15px;
+}
+
+form.contactForm textarea {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.form-horizontal .control-label.text-left {
+    text-align: left;
+    padding-left: 0;
+}
+
+.square {
+  width: 100%;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.thumb-info.thumb-info-centered-info.thumb-info-no-borders {
+    overflow: hidden;
+    position: relative;
+}
+
+.thumb-info.thumb-info-centered-info.thumb-info-no-borders img {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.feature-box-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+#header .header-logo img {
+    width: 100%;
+    max-width: 404px;
+    margin-top: 20px;
+}
+
+.about-content img {
+    width: 100%;
+    max-width: 400px;
+}
+
+#footer .footer-copyright p {
+    margin-top: 5px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.collapse #revolutionSlider_forcefullwidth,
+.collapsing #revolutionSlider_forcefullwidth {
+    height: 0 !important;
+}
+
+#footer {
+    margin-top: 0;
+}
+
+.main .container:last-child,
+#googlemaps {
+    padding-bottom: 50px;
+}

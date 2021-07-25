@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Admin Area";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">@ViewBag.Title</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <h4>Welcome! What would you like to manage today?</h4>
+            <ul>
+                <li><a href="@Url.Action("Manage", "BusinessHours")">Business Hours</a></li>
+                <li><a href="@Url.Action("Manage", "BusinessInfo")">Business Information</a> (address, phone number, email, etc.)</li>
+                <li><a href="@Url.Action("Manage", "Slideshows")">Featured Content Slides</a> (on homepage)</li>
+                <li><a href="@Url.Action("Manage", "Testimonials")">Testimonials</a></li>
+                <li><a href="@Url.Action("Manage", "Staff")">Staff Members</a></li>
+                <li><a href="@Url.Action("Manage", "Services")">Services</a></li>
+                <li><a href="@Url.Action("Manage", "Newsletters")">Newsletters</a></li>
+                <li><a href="@Url.Action("Manage", "Files")">Downloads / Files</a></li>
+                <li><a href="@Url.Action("Manage", "Links")">Links</a> (external and internal)</li>
+                <li><a href="@Url.Action("Manage", "StockImages")">Images</a></li>
+                <li><a href="@Url.Action("Details", "Pages", new { id = 1 })">"Home" Page</a></li>
+                <li><a href="@Url.Action("Details", "Pages", new { id = 2 })">"About" Page</a></li>
+                <li><a href="@Url.Action("Manage", "Subscribers")">Subscribers</a></li>
+                <li><a href="@Url.Action("Index", "UsersAdmin")">User Accounts</a></li>
+                <li><a href="@Url.Action("Index", "RolesAdmin")">User Roles</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

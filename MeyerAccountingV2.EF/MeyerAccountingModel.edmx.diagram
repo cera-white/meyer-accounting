@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="da0bb16efcd34bf299e77f47bbe674ee" Name="Diagram1">
+        <EntityTypeShape EntityType="MeyerAccountingModel.AspNetRole" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.BusinessHour" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.BusinessInfo" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Comment" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.File" Width="1.5" PointX="15" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Link" Width="1.5" PointX="12.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.LinkType" Width="1.5" PointX="10.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Newsletter" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Service" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.ServiceType" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Slideshow" Width="1.5" PointX="15" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Staff" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.StaffQualification" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.StockImage" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Testimonial" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Comment_Newsletter" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_File_Link" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Link_LinkType" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Slideshow_Link" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Newsletter_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Service_ServiceType" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Slideshow_StockImages" ManuallyRouted="false" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_StaffQualifications_Staff" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Subscriber" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.AspNetUser" Width="1.5" PointX="3" PointY="6.375" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Staff_AspNetUsers" />
+        <AssociationConnector Association="MeyerAccountingModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Page" Width="1.5" PointX="9.75" PointY="17" />
+        <EntityTypeShape EntityType="MeyerAccountingModel.Section" Width="1.5" PointX="12" PointY="12.875" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Section_Page" />
+        <AssociationConnector Association="MeyerAccountingModel.FK_Sections_StockImages" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+﻿@model MeyerAccountingV2.EF.Subscriber
+
+@{
+    ViewBag.Title = "Confirmation Successful";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">Thank you!</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <p class="lead mb-xl mt-lg">
+                <strong>@Model.Email</strong> has been successfully added to our mailing list.
+            </p>
+
+            <p>
+                You will now receive monthly newsletters and other important email communication.
+            </p>
+
+            <p>
+                Not what you wanted? You can unsubscribe at any time by 
+                <a href="@Url.Action("Unsubscribe", new { email = Model.Email })">clicking this link</a>.
+            </p>
+        </div>
+    </div>
+</div>
+

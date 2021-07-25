@@ -1,0 +1,30 @@
+﻿@model MeyerAccountingV2.EF.Subscriber
+
+@{
+    ViewBag.Title = "Unsubscribe Successful";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl mb-lg">
+        <div class="col-md-12">
+            <h1 class="mt-xl mb-none">Thank you!</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+
+            <p class="lead mb-xl mt-lg">
+                <strong>@Model.Email</strong> has been successfully removed from our mailing list.
+            </p>
+
+            <p>
+                We're sorry to see you go. Please let us know if there's anything we can do better by <a href="@Url.Action("Contact", "Home")">sending us a message</a>.
+            </p>
+
+            <p>
+                You can reactivate your subscription at any time by <a href="@Url.Action("Index", "Newsletters")">signing up again</a>.
+            </p>
+        </div>
+    </div>
+</div>
+

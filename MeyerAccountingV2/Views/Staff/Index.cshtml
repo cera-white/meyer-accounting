@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MeyerAccountingV2.EF.Staff>
+
+@{
+    ViewBag.Title = "Staff";
+    ViewBag.FooterInfo = "<a href='@Url.Action('Contact', 'Home')'>Contact</a>";
+}
+
+<div class="container">
+    <div class="row pt-xl">
+        <div class="col-md-9">
+            <h1 class="mt-xl mb-none">Staff Members</h1>
+            <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+            </div>
+            <ul class="team-list mt-xs">
+                @foreach (var item in Model.Select((value, i) => new { i, value }))
+                {
+                    <li class="col-sm-6 mb-xl center isotope-item">
+                        <div class="thumb-info thumb-info-centered-info thumb-info-no-borders square">
+                            <img src="~/Content/Image/team/@item.value.Image" class="img-responsive" alt="@item.value.FullName">
+                        </div>
+
+                        <h4 class="mt-md mb-none">@(item.value.MiddleName != null ? string.Format("{0} {1} {2}", item.value.FirstName, item.value.MiddleName, item.value.LastName) : string.Format("{0} {1}", item.value.FirstName, item.value.LastName))</h4>
+                        <p class="mb-none">@item.value.Title</p>
+                        <ul class="list list-icons text-left thumb-info-social-icons mt-sm pb-none">
+                            @foreach (var qualification in item.value.StaffQualifications)
+                            {
+                                <li><i class="fa fa-check"></i> @qualification.Description</li>
+                            }
+                        </ul>
+                    </li>
+                    if ((item.i + 1) % 2 == 0)
+                    {
+                        <div class="clearfix"></div>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="col-md-3">
+            <aside class="sidebar">
+                <h4 class="mt-xl mb-md">Contact Us</h4>
+                <p>Contact us or give us a call to discover how we can help.</p>
+
+                <div class="divider divider-primary divider-small mb-xl">
+                    <hr>
+                </div>
+
+                @{Html.RenderPartial("_ContactForm", new MeyerAccountingV2.Models.ContactViewModel());}
+
+            </aside>
+        </div>
+    </div>
+
+</div>
