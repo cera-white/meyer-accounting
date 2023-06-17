@@ -1,5 +1,7 @@
 # Meyer Accounting & Tax
 
+![Social Preview](./social_preview.png)
+
 This repository contains the source code for the following website:
 
 [Meyer Accounting & Tax](https://meyer.anigrams.org)
